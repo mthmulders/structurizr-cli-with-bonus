@@ -1,6 +1,6 @@
 # Introduction
 
-This Docker image does exactly what the `structurizr/cli` image does, but with the added configuration that it allows a run within Github Actions. It includes additional tools such as Git, jq, and PlantUML, as well as Graphviz and `structurizr.sh` (v1.35.0), making this image ideal for advanced diagram generation and version control in Structurizr projects including documentation-as-code. The image is automatically built and published using a GitHub Actions workflow. For now this image depends on manually updating the CLI zip file which is downloaded from the [official release website](https://github.com/structurizr/cli/releases). 
+This Docker image does exactly what the `structurizr/cli` image does, but with the added configuration that it allows a run within Github Actions. It includes additional tools such as Git, jq, and PlantUML, as well as Graphviz and `structurizr.sh` (v2025.05.28), making this image ideal for advanced diagram generation and version control in Structurizr projects including documentation-as-code. The image is automatically built and published using a GitHub Actions workflow. For now this image depends on manually updating the CLI zip file which is downloaded from the [official release website](https://github.com/structurizr/cli/releases). 
 
 ## Why do I need this?
 
