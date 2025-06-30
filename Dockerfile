@@ -4,7 +4,7 @@
 #   - about ENTRYPOINT: GitHub Actions recommend using an absolute path for the entrypoint. 
 
 # Builder stage
-FROM eclipse-temurin:17.0.8.1_1-jre-jammy as builder
+FROM eclipse-temurin:21.0.7_6-jre-noble as builder
 
 # Install dependencies
 RUN apt-get update && \
@@ -25,7 +25,7 @@ RUN mkdir /structurizr-cli && \
     rm structurizr-cli-*.zip
 
 ### Final image ###
-FROM eclipse-temurin:17.0.8.1_1-jre-jammy
+FROM eclipse-temurin:21.0.7_6-jre-noble
 
 # Install dependencies and clean up
 RUN apt-get update && \
