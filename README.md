@@ -41,6 +41,11 @@ This command runs the container interactively, removes it after exit, and mounts
 - **Graphviz**: Enables graph-based diagram representations.
 - **PlantUML**: Supports UML diagram generation within Structurizr.
 
+## Versions
+
+| Image version | Java version | Structurizr CLI version | PlantUML version |
+| --- | --- | --- | --- |
+| _latest_ | 25+36-LTS | v2025.05.28 | v1.2025.9 |
 
 ## Contributing
 
