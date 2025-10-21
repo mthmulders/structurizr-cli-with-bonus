@@ -4,7 +4,7 @@
 #   - about ENTRYPOINT: GitHub Actions recommend using an absolute path for the entrypoint. 
 
 # Builder stage
-FROM eclipse-temurin:25_36-jre-noble as builder
+FROM eclipse-temurin:25_36-jre-noble AS builder
 
 RUN java_version=$(java -XshowSettings:properties 2>&1 | grep java.runtime.version | cut -d '=' -f 2 | tr -d " ") && \
     echo Using Java version $java_version
@@ -41,7 +41,7 @@ COPY --from=builder /usr/local/bin/plantuml.jar /usr/local/bin/
 COPY --from=builder /usr/local/bin/plantuml /usr/local/bin/
 
 # Update PATH
-ENV PATH /usr/local/structurizr-cli/:/usr/local/bin/:$PATH
+ENV PATH=/usr/local/structurizr-cli/:/usr/local/bin/:$PATH
 
 # Setup Git configuration
 RUN git config --global user.name github-actions && \
