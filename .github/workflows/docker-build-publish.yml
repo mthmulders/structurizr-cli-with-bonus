@@ -4,28 +4,31 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'structurizr-cli-*.zip'
-      - 'Dockerfile'
+
 jobs:
-  docker:
-    runs-on: ubuntu-latest
+  build-and-publish:
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ ubuntu-24.04, ubuntu-24.04-arm ]
+    runs-on: ${{ matrix.os }}
 
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5.0.0
 
       - name: Log in to GitHub Container Registry
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3.6.0
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v6.18.0
         with:
           context: .
           file: Dockerfile
           push: true
-          tags: ghcr.io/sebastienfi/structurizr-cli-with-bonus:latest
+          tags: |
+            ghcr.io/mthmulders/structurizr-cli-with-bonus:latest
