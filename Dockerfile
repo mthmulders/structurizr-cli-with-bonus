@@ -6,9 +6,12 @@
 # Builder stage
 FROM eclipse-temurin:25_36-jre-noble as builder
 
+RUN java_version=$(java -XshowSettings:properties 2>&1 | grep java.runtime.version | cut -d '=' -f 2 | tr -d " ") && \
+    echo Using Java version $java_version
+
 # Install dependencies
 RUN apt-get update && \
-    apt-get install -y unzip && \
+    apt-get install -y wget unzip && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
