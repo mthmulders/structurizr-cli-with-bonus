@@ -18,11 +18,10 @@ RUN wget https://downloads.sourceforge.net/project/plantuml/plantuml.jar -O /usr
     chmod +x /usr/local/bin/plantuml
 
 # Copy and setup Structurizr CLI
-COPY structurizr-cli-*.zip /
+RUN wget https://github.com/structurizr/cli/releases/download/v2025.05.28/structurizr-cli.zip -O structurizr-cli.zip
 RUN mkdir /structurizr-cli && \
-    unzip structurizr-cli-*.zip -d /structurizr-cli && \
-    chmod +x /structurizr-cli/structurizr.sh && \
-    rm structurizr-cli-*.zip
+    unzip structurizr-cli.zip -d /structurizr-cli && \
+    chmod +x /structurizr-cli/structurizr.sh
 
 ### Final image ###
 FROM eclipse-temurin:25_36-jre-noble
