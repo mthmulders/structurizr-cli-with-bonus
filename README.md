@@ -47,6 +47,15 @@ This command runs the container interactively, removes it after exit, and mounts
 | --- | --- | --- | --- |
 | _latest_ | 25+36-LTS | v2025.05.28 | v1.2025.9 |
 
+## Credits
+
+This image is a fork of the incredible work done by [Sébastien Fichot](sebastienfi/structurizr-cli-with-bonus).
+It builds on top of that by
+
+- using a more recent version of Java;
+- publishing images for multiple CPU architectures;
+- using a more recent version of PlantUML;
+
 ## Contributing
 
 If you have suggestions for improving this Docker image, please submit an issue or pull request to the repository.
