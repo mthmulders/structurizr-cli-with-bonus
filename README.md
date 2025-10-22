@@ -13,13 +13,13 @@ You can also build on top of it your own action, or use it locally to generate i
 The image is automatically built and published to the GitHub Container Registry. You can pull the image using the following command:
 
 ```bash
-docker pull ghcr.io/sebastienfi/structurizr-cli-with-bonus:latest
+docker pull ghcr.io/mthmulders/structurizr-cli-with-bonus:latest
 ```
 
 Alternatively, to build the image locally:
 
 ```bash
-git clone git@github.com:sebastienfi/structurizr-cli-with-bonus.git
+git clone git@github.com:mthmulders/structurizr-cli-with-bonus.git
 cd structurizr-cli-with-bonus
 docker build -t my-structurizr-image .
 ```
@@ -29,7 +29,7 @@ docker build -t my-structurizr-image .
 Run a container based on the image:
 
 ```bash
-docker run -it --rm -v $(pwd):/workspace ghcr.io/sebastienfi/structurizr-cli-with-bonus:latest
+docker run -it --rm -v $(pwd):/workspace ghcr.io/mthmulders/structurizr-cli-with-bonus:latest
 ```
 
 This command runs the container interactively, removes it after exit, and mounts the current directory to the container's workspace.
