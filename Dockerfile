@@ -29,7 +29,7 @@ RUN mkdir /structurizr-cli && \
 ### Final image
 FROM eclipse-temurin:25_36-jre-noble
 
-LABEL org.opencontainers.image.source = "https://github.com/mthmulders/structurizr-cli-with-bonus" 
+LABEL org.opencontainers.image.source="https://github.com/mthmulders/structurizr-cli-with-bonus" 
 
 # Install dependencies and clean up
 RUN apt-get update && \
