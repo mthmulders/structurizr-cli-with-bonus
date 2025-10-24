@@ -35,4 +35,3 @@ jobs:
           push: true
           tags: |
             ghcr.io/mthmulders/structurizr-cli-with-bonus:latest
-            ghcr.io/mthmulders/structurizr-cli-with-bonus:v20251021.1
