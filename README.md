@@ -1,12 +1,19 @@
 # Introduction
 
-This Docker image does exactly what the `structurizr/cli` image does, but with the added configuration that it allows a run within Github Actions. It includes additional tools such as Git, jq, and PlantUML, as well as Graphviz and `structurizr.sh`, making this image ideal for advanced diagram generation and version control in Structurizr projects including documentation-as-code. The image is automatically built and published using a GitHub Actions workflow. For now this image depends on manually updating the CLI zip file which is downloaded from the [official release website](https://github.com/structurizr/cli/releases).
+This Docker image does exactly what the `structurizr/cli` image does, but with the added configuration that it allows a run within Github Actions workflow or Gitlab CI job.
+Its default entrypoint is to run Structurizr, but you can run PlantUML inside it, too.
+
+It includes additional tools such as Git, jq, and PlantUML, as well as Graphviz and `structurizr.sh`.
+This makes this image ideal for advanced diagram generation and version control in Structurizr projects including documentation-as-code.
+The image is automatically built and published using a GitHub Actions workflow.
+
+For now this image depends on manually updating the URLs for downloading Structurizr and PlantUML; the version history is documented at the end of this file.
 
 ## Why do I need this?
 
-This image is used as a container for the GitHub Action `sebastienfi/structurizr-gen-images` which allows you to generate images for your views automatically for each PR which modifies the `workspace.dsl` file. The generated images are committed into the PR. [Read more about this action](https://github.com/marketplace/actions/generate-structurizr-diagrams-images-from-dsl). A second action `sebastienfi/structurizr-pr-comment` makes a comment on the pull request with the generated images.
-
-You can also build on top of it your own action, or use it locally to generate images without having to install PlantUML or Graphviz yourself. In that, it differs from the official `structurizr/cli` image.
+I use this image to generate SVG diagrams from a Structurizr workspace, with PlantUML as the "step-in-between".
+To ensure the generated diagrams are consistent, this image is pulled by developers to extract diagrams from the workspace.
+In a pipeline, I mostly use the image to check if the diagrams were updated - but you could also use it to generate them and add them to the Git repository.
 
 ## Getting the Image
 
@@ -29,7 +36,11 @@ docker build -t my-structurizr-image .
 Run a container based on the image:
 
 ```bash
-docker run -it --rm -v $(pwd):/workspace ghcr.io/mthmulders/structurizr-cli-with-bonus:latest
+# Runs Structurizr, append only arguments to structurizr-cli
+docker run --rm -v $(pwd):/workspace ghcr.io/mthmulders/structurizr-cli-with-bonus:latest export --workspace workspace/my-workspace.dsl --format plantuml
+
+# Runs PlantUML
+docker run --rm --entrypoint /usr/local/bin/plantuml -v $(pwd):/workspace ghcr.io/mthmulders/structurizr-cli-with-bonus:latest -tsvg workspace/my-diagram.puml -o .
 ```
 
 This command runs the container interactively, removes it after exit, and mounts the current directory to the container's workspace.
