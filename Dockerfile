@@ -21,7 +21,7 @@ RUN wget https://github.com/plantuml/plantuml/releases/download/v1.2025.9/plantu
     chmod +x /usr/local/bin/plantuml
 
 # Copy and setup Structurizr CLI
-RUN wget https://github.com/structurizr/cli/releases/download/v2025.05.28/structurizr-cli.zip -O structurizr-cli.zip
+RUN wget https://github.com/structurizr/cli/releases/download/v2025.11.01/structurizr-cli.zip -O structurizr-cli.zip
 RUN mkdir /structurizr-cli && \
     unzip structurizr-cli.zip -d /structurizr-cli && \
     chmod +x /structurizr-cli/structurizr.sh
