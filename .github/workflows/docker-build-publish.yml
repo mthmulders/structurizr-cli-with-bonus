@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    tags:
+      - 'v*'
 
 jobs:
   build-and-publish:
@@ -35,3 +37,19 @@ jobs:
           push: true
           tags: |
             ghcr.io/mthmulders/structurizr-cli-with-bonus:latest
+
+      - name: Get the tagged version
+        id: get_version
+        if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
+        run: echo "SOURCE_TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6.18.0
+        if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
+        with:
+          context: .
+          file: Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ghcr.io/mthmulders/structurizr-cli-with-bonus:${{ env.SOURCE_TAG }}
