@@ -8,7 +8,7 @@ FROM eclipse-temurin:25_36-jre-noble AS builder
 
 # Install dependencies
 RUN apt-get update && \
-    apt-get install -y wget unzip && \
+    apt-get install -y -q wget unzip && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -37,7 +37,7 @@ LABEL org.opencontainers.image.licenses="MIT"
 
 # Install dependencies and clean up
 RUN apt-get update && \
-    apt-get install -y graphviz jq git && \
+    apt-get install -y -q graphviz jq git && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
