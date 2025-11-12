@@ -8,7 +8,7 @@ FROM eclipse-temurin:25_36-jre-noble AS builder
 
 # Install dependencies
 RUN apt-get update && \
-    apt-get install -y -q graphviz unzip && \
+    apt-get install -y -q curl graphviz unzip && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
