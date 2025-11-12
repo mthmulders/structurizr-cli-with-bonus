@@ -6,9 +6,6 @@
 # Builder stage
 FROM eclipse-temurin:25_36-jre-noble AS builder
 
-RUN java_version=$(java -XshowSettings:properties 2>&1 | grep java.runtime.version | cut -d '=' -f 2 | tr -d " ") && \
-    echo Using Java version $java_version
-
 # Install dependencies
 RUN apt-get update && \
     apt-get install -y wget unzip && \
@@ -25,6 +22,11 @@ RUN wget https://github.com/structurizr/cli/releases/download/v2025.11.01/struct
 RUN mkdir /structurizr-cli && \
     unzip structurizr-cli.zip -d /structurizr-cli && \
     chmod +x /structurizr-cli/structurizr.sh
+
+# Verify versions of installed software
+RUN plantuml --version && \
+    /structurizr-cli/structurizr.sh version && \
+    java -version
 
 ### Final image
 FROM eclipse-temurin:25_36-jre-noble
