@@ -8,18 +8,18 @@ FROM eclipse-temurin:25_36-jre-noble AS builder
 
 # Install dependencies
 RUN apt-get update && \
-    apt-get install -y -q graphviz wget unzip && \
+    apt-get install -y -q graphviz unzip && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 # Install PlantUML
-RUN wget https://github.com/plantuml/plantuml/releases/download/v1.2025.9/plantuml.jar -O /usr/local/bin/plantuml.jar && \
+RUN curl -sLOJ https://github.com/plantuml/plantuml/releases/download/v1.2025.10/plantuml.jar --output-dir /usr/local/bin/ && \
     echo '#!/bin/bash\njava -jar /usr/local/bin/plantuml.jar "$@"' > /usr/local/bin/plantuml && \
     chmod +x /usr/local/bin/plantuml
 
 # Copy and setup Structurizr CLI
-RUN wget https://github.com/structurizr/cli/releases/download/v2025.11.01/structurizr-cli.zip -O structurizr-cli.zip
-RUN mkdir /structurizr-cli && \
+RUN curl -sLOJ https://github.com/structurizr/cli/releases/download/v2025.11.01/structurizr-cli.zip && \
+    mkdir /structurizr-cli && \
     unzip structurizr-cli.zip -d /structurizr-cli && \
     chmod +x /structurizr-cli/structurizr.sh
 
