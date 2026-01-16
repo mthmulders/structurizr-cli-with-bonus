@@ -13,7 +13,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install PlantUML
-RUN curl -sLOJ https://github.com/plantuml/plantuml/releases/download/v1.2025.10/plantuml.jar --output-dir /usr/local/bin/ && \
+RUN curl -sLOJ https://github.com/plantuml/plantuml/releases/download/v1.2026.0/plantuml.jar --output-dir /usr/local/bin/ && \
     echo '#!/bin/bash\njava -jar /usr/local/bin/plantuml.jar "$@"' > /usr/local/bin/plantuml && \
     chmod +x /usr/local/bin/plantuml
 
