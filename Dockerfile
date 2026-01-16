@@ -32,7 +32,7 @@ RUN plantuml --version && \
 FROM eclipse-temurin:25.0.1_8-jre-noble
 
 LABEL org.opencontainers.image.source="https://github.com/mthmulders/structurizr-cli-with-bonus" 
-LABEL org.opencontainers.image.description A Docker image with structurizr-cli, Git, Graphviz, jq, and PlantUML installed.
+LABEL org.opencontainers.image.description="A Docker image with structurizr-cli, Git, Graphviz, jq, and PlantUML installed."
 LABEL org.opencontainers.image.licenses="MIT"
 
 # Install dependencies and clean up
