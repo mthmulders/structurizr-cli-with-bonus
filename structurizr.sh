@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-java -jar /structurizr-cli/structurizr.war "$@"
+install_dir=$( dirname -- "$( readlink -f -- "$0"; )"; )
+java -jar $install_dir/structurizr.war "$@"
