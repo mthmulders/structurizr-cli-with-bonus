@@ -19,7 +19,7 @@ RUN curl -sLOJ https://github.com/plantuml/plantuml/releases/download/v1.2026.2/
 
 # Copy and setup Structurizr CLI
 ADD structurizr.sh /structurizr-cli/structurizr.sh
-RUN curl -sLJ https://download.structurizr.com/structurizr-2026.03.06.war --output-dir /structurizr-cli --output structurizr.war && \
+RUN curl -sLJ https://download.structurizr.com/structurizr-2026.04.19.war --output-dir /structurizr-cli --output structurizr.war && \
     chmod +x /structurizr-cli/structurizr.sh
 
 # Verify versions of installed software
