@@ -4,7 +4,7 @@
 #   - about ENTRYPOINT: GitHub Actions recommend using an absolute path for the entrypoint. 
 
 # Builder stage
-FROM eclipse-temurin:25.0.2_10-jre-noble AS builder
+FROM eclipse-temurin:26_35-jre-noble AS builder
 
 # Install dependencies
 RUN apt-get update && \
@@ -28,7 +28,7 @@ RUN plantuml --version && \
     java -version
 
 ### Final image
-FROM eclipse-temurin:25.0.2_10-jre-noble
+FROM eclipse-temurin:26_35-jre-noble
 
 LABEL org.opencontainers.image.source="https://github.com/mthmulders/structurizr-cli-with-bonus" 
 LABEL org.opencontainers.image.description="A Docker image with structurizr-cli, Git, Graphviz, jq, and PlantUML installed."
