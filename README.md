@@ -56,7 +56,7 @@ This command runs the container interactively, removes it after exit, and mounts
 
 | Image version | Java version | Structurizr CLI version | PlantUML version |
 | --- | --- | --- | --- |
-| *unreleased* | 26.0.1+8 | v2026.05.16 | v1.2026.6 |
+| *unreleased* | 26.0.1+8 | v2026.05.22 | v1.2026.6 |
 | **v20260521.1** | 26.0.1+8 | v2026.05.16 | v1.2026.3 |
 | **v20260331.3** | 25.0.2+10 | v2026.03.06 | v1.2026.2 |
 | **v20260312.1** | 25.0.2+10 | v2026.03.06 | v1.2026.2 |
