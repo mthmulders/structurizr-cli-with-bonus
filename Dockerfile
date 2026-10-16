@@ -6,6 +6,8 @@
 # Builder stage
 FROM eclipse-temurin:27_35-jre-resolute AS builder
 
+ARG DEBIAN_FRONTEND=noninteractive
+
 # Install dependencies
 RUN apt-get update && \
     apt-get install -y -q curl graphviz && \
@@ -29,6 +31,8 @@ RUN plantuml --version && \
 
 ### Final image
 FROM eclipse-temurin:27_35-jre-resolute
+
+ARG DEBIAN_FRONTEND=noninteractive
 
 LABEL org.opencontainers.image.source="https://github.com/mthmulders/structurizr-cli-with-bonus" 
 LABEL org.opencontainers.image.description="A Docker image with structurizr-cli, Git, Graphviz, jq, and PlantUML installed."
